@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
 import { setModalWindow } from '../../store/postSlice';
 
 import Delete from './Delete';
-import PostInfo from './PostInfo';
+import PostForm from './PostForm';
 
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -45,9 +45,9 @@ const ModalWindow = () => {
         {modalWindow.type === 'delete' ? (
           <Delete />
         ) : modalWindow.type === 'create' ? (
-          <PostInfo type="create" />
+          <PostForm type="create" />
         ) : modalWindow.type === 'edit' ? (
-          <PostInfo type="edit" />
+          <PostForm type="edit" />
         ) : (
           <></>
         )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './postInfo.scss';
+import './postForm.scss';
 import { v4 as uuidv4 } from 'uuid';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
@@ -8,7 +8,7 @@ import { setModalWindow, setPostList } from '../../../store/postSlice';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const PostInfo = ({ type }) => {
+const PostForm = ({ type }) => {
   const dispatch = useAppDispatch();
   const { postList, modalWindow } = useAppSelector((state) => state.postSlice);
 
@@ -86,7 +86,7 @@ const PostInfo = ({ type }) => {
   };
 
   return (
-    <div className="postInfo">
+    <div className="PostForm">
       <TextField
         id="outlined-basic"
         label="Заголовок"
@@ -131,4 +131,4 @@ const PostInfo = ({ type }) => {
   );
 };
 
-export default PostInfo;
+export default PostForm;
