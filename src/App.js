@@ -8,10 +8,12 @@ import Actions from './components/Actions';
 function App() {
   return (
     <div className="app">
-      <Title />
-      <div className="control_panel">
-        <Filters />
-        <Actions />
+      <div className="header">
+        <Title />
+        <div className="control_panel">
+          <Filters />
+          <Actions />
+        </div>
       </div>
       <PostList />
     </div>
