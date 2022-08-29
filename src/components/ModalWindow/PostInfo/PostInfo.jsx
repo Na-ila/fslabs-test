@@ -38,7 +38,7 @@ const PostInfo = ({ type }) => {
         id: uuidv4(),
         title,
         text,
-        date: new Date().toISOString().slice(0, 10),
+        date: new Date().toISOString(),
         img: file,
       };
 
@@ -64,7 +64,7 @@ const PostInfo = ({ type }) => {
         title,
         text,
         img: file,
-        date: new Date().toISOString().slice(0, 10),
+        date: new Date().toISOString(),
       };
 
       dispatch(
