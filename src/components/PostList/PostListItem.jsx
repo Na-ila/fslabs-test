@@ -39,7 +39,7 @@ const PostListItem = ({ post }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, width: 345 }}>
+    <Card sx={{ maxWidth: 345, width: 345 }} className="post_card">
       <CardHeader
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
