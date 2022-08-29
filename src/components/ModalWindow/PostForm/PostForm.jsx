@@ -86,7 +86,7 @@ const PostForm = ({ type }) => {
   };
 
   return (
-    <div className="PostForm">
+    <div className="postForm">
       <TextField
         id="outlined-basic"
         label="Заголовок"
