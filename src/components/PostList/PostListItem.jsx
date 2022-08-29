@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const PostListItem = ({ post }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, width: 345 }}>
       <CardHeader
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
