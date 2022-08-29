@@ -23,6 +23,7 @@ const PostInfo = ({ type }) => {
 
       setTitle(post.title);
       setText(post.text);
+      setFile(post.img);
     }
   }, [postList, modalWindow.id, type]);
 
@@ -56,15 +57,15 @@ const PostInfo = ({ type }) => {
     const index = postList.findIndex((item) => item.id === modalWindow.id);
     const post = postList.find((item) => item.id === modalWindow.id);
 
-    const editedPost = {
-      id: modalWindow.id,
-      title,
-      text,
-      img: post.img,
-      date: new Date().toISOString().slice(0, 10),
-    };
+    if (title !== post.title || text !== post.text || file !== post.img) {
+      const editedPost = {
+        id: modalWindow.id,
+        title,
+        text,
+        img: URL.createObjectURL(file[0]),
+        date: new Date().toISOString().slice(0, 10),
+      };
 
-    if (title !== post.title || text !== post.text) {
       dispatch(
         setPostList([
           ...postList.slice(0, index),
