@@ -24,7 +24,7 @@ const PostListItem = ({ post }) => {
           </IconButton>
         }
         title={post.title}
-        subheader={post.date}
+        subheader={new Date(post.date).toLocaleDateString('ru-RU')}
       />
       {post.img && (
         <CardMedia

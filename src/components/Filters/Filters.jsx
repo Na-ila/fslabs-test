@@ -2,7 +2,7 @@ import React from 'react';
 import './filters.scss';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { setSearchStr } from '../../store/postSlice';
+import { setSearchStr, setDateFromLast } from '../../store/postSlice';
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -13,10 +13,9 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 const Filters = () => {
   const dispatch = useAppDispatch();
   const { filters } = useAppSelector((st) => st.postSlice);
-  const [dateUp, setDateUp] = React.useState(false);
 
   const handleToggle = () => {
-    setDateUp((prev) => !prev);
+    dispatch(setDateFromLast(!filters.dateFromLast));
   };
 
   return (
@@ -37,7 +36,7 @@ const Filters = () => {
           aria-haspopup="menu"
           onClick={handleToggle}
         >
-          {dateUp ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+          {filters.dateFromLast ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
         </Button>
       </ButtonGroup>
     </div>
