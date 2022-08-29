@@ -1,32 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  postList: [
-    {
-      id: 1,
-      title: 'post 1',
-      text: 'This if you like.',
-      img: 'https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn',
-      date: '2017-01-25',
-    },
-    {
-      id: 2,
-      title: 'post 2',
-      text: ' together with your guests. Add 1 cup of frozen peas along with the mussels.',
-      img: '',
-      date: '2017-01-27',
-    },
-    {
-      id: 3,
-      title: 'post 3',
-      text: 'This impressive paella is a perfect party dish and a fun meal to coo.',
-      img: 'https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn',
-      date: '2017-01-26',
-    },
-  ],
+  postList: [],
   filters: {
     searchStr: '',
     dateFromLast: true,
+  },
+  modalWindow: {
+    open: false,
+    type: '',
+    id: '',
   },
 };
 
@@ -43,9 +26,13 @@ const postSlice = createSlice({
     setDateFromLast(state, { payload }) {
       state.filters.dateFromLast = payload;
     },
+    setModalWindow(state, { payload }) {
+      state.modalWindow = payload;
+    },
   },
 });
 
-export const { setPostList, setSearchStr, setDateFromLast } = postSlice.actions;
+export const { setPostList, setSearchStr, setDateFromLast, setModalWindow } =
+  postSlice.actions;
 
 export default postSlice.reducer;

@@ -1,4 +1,8 @@
 import * as React from 'react';
+
+import { useAppDispatch } from '../../hooks/hooks';
+import { setModalWindow } from '../../store/postSlice';
+
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -8,8 +12,31 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const PostListItem = ({ post }) => {
+  const dispatch = useAppDispatch();
+
+  const deletePost = () => {
+    dispatch(
+      setModalWindow({
+        open: true,
+        type: 'delete',
+        id: post.id,
+      })
+    );
+  };
+
+  const editPost = () => {
+    dispatch(
+      setModalWindow({
+        open: true,
+        type: 'edit',
+        id: post.id,
+      })
+    );
+  };
+
   return (
     <Card sx={{ maxWidth: 345, width: 345 }}>
       <CardHeader
@@ -19,9 +46,14 @@ const PostListItem = ({ post }) => {
         //   </Avatar>
         // }
         action={
-          <IconButton aria-label="settings">
-            <DeleteIcon />
-          </IconButton>
+          <>
+            <IconButton aria-label="settings" onClick={editPost}>
+              <EditIcon />
+            </IconButton>
+            <IconButton aria-label="settings" onClick={deletePost}>
+              <DeleteIcon />
+            </IconButton>
+          </>
         }
         title={post.title}
         subheader={new Date(post.date).toLocaleDateString('ru-RU')}
@@ -31,7 +63,7 @@ const PostListItem = ({ post }) => {
           component="img"
           height="194"
           image={post.img}
-          alt="Paella dish"
+          alt={post.title}
         />
       )}
       <CardContent>
