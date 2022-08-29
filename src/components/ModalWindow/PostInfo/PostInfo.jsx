@@ -38,7 +38,7 @@ const PostInfo = ({ type }) => {
         title,
         text,
         date: new Date().toISOString().slice(0, 10),
-        img: URL.createObjectURL(file[0]),
+        img: file && URL.createObjectURL(file[0]),
       };
 
       dispatch(setPostList([post, ...postList]));
