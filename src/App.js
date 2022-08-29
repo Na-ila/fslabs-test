@@ -1,6 +1,7 @@
 import React from 'react';
 import './app.scss';
 import posts from './postList.json';
+import { v4 as uuidv4 } from 'uuid';
 
 import { useAppDispatch } from './hooks/hooks';
 import { setPostList } from './store/postSlice';
@@ -15,7 +16,16 @@ function App() {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    dispatch(setPostList(posts));
+    dispatch(
+      setPostList(
+        posts.map((item) => {
+          return {
+            ...item,
+            id: uuidv4(),
+          };
+        })
+      )
+    );
   }, [dispatch]);
 
   return (

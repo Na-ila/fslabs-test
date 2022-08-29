@@ -1,5 +1,6 @@
 import React from 'react';
 import './postInfo.scss';
+import { v4 as uuidv4 } from 'uuid';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
 import { setModalWindow, setPostList } from '../../../store/postSlice';
@@ -34,7 +35,7 @@ const PostInfo = ({ type }) => {
       setTextError(true);
     } else {
       const post = {
-        id: postList.length + 1,
+        id: uuidv4(),
         title,
         text,
         date: new Date().toISOString().slice(0, 10),
