@@ -39,7 +39,7 @@ const PostInfo = ({ type }) => {
         title,
         text,
         date: new Date().toISOString().slice(0, 10),
-        img: file && URL.createObjectURL(file[0]),
+        img: file,
       };
 
       dispatch(setPostList([post, ...postList]));
@@ -63,7 +63,7 @@ const PostInfo = ({ type }) => {
         id: modalWindow.id,
         title,
         text,
-        img: URL.createObjectURL(file[0]),
+        img: file,
         date: new Date().toISOString().slice(0, 10),
       };
 
@@ -119,7 +119,7 @@ const PostInfo = ({ type }) => {
         type="file"
         multiple
         accept="image/*"
-        onChange={(e) => setFile(e.target.files)}
+        onChange={(e) => setFile(URL.createObjectURL(e.target.files[0]))}
       />
       <Button
         variant="contained"
