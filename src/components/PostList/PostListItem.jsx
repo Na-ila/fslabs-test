@@ -3,6 +3,7 @@ import * as React from 'react';
 import { useAppDispatch } from '../../hooks/hooks';
 import { setModalWindow } from '../../store/postSlice';
 
+import Tooltip from '@mui/material/Tooltip';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -47,12 +48,16 @@ const PostListItem = ({ post }) => {
         // }
         action={
           <>
-            <IconButton aria-label="settings" onClick={editPost}>
-              <EditIcon />
-            </IconButton>
-            <IconButton aria-label="settings" onClick={deletePost}>
-              <DeleteIcon />
-            </IconButton>
+            <Tooltip title="Редактировать">
+              <IconButton aria-label="settings" onClick={editPost}>
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Удалить">
+              <IconButton aria-label="settings" onClick={deletePost}>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
           </>
         }
         title={post.title}
