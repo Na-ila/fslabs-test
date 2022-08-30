@@ -6,11 +6,6 @@ const initialState = {
     searchStr: '',
     dateFromLast: true,
   },
-  modalWindow: {
-    open: false,
-    type: '',
-    id: '',
-  },
 };
 
 const postSlice = createSlice({
@@ -26,13 +21,9 @@ const postSlice = createSlice({
     setDateFromLast(state, { payload }) {
       state.filters.dateFromLast = payload;
     },
-    setModalWindow(state, { payload }) {
-      state.modalWindow = payload;
-    },
   },
 });
 
-export const { setPostList, setSearchStr, setDateFromLast, setModalWindow } =
-  postSlice.actions;
+export const { setPostList, setSearchStr, setDateFromLast } = postSlice.actions;
 
 export default postSlice.reducer;

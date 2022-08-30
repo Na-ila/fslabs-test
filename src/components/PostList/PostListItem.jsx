@@ -1,7 +1,5 @@
 import * as React from 'react';
-
-import { useAppDispatch } from '../../hooks/hooks';
-import { setModalWindow } from '../../store/postSlice';
+import { Link, useLocation } from 'react-router-dom';
 
 import Tooltip from '@mui/material/Tooltip';
 import Card from '@mui/material/Card';
@@ -16,27 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 const PostListItem = ({ post }) => {
-  const dispatch = useAppDispatch();
-
-  const deletePost = () => {
-    dispatch(
-      setModalWindow({
-        open: true,
-        type: 'delete',
-        id: post.id,
-      })
-    );
-  };
-
-  const editPost = () => {
-    dispatch(
-      setModalWindow({
-        open: true,
-        type: 'edit',
-        id: post.id,
-      })
-    );
-  };
+  const location = useLocation();
 
   return (
     <Card sx={{ maxWidth: 345, width: 345 }} className="post_card">
@@ -49,14 +27,18 @@ const PostListItem = ({ post }) => {
         action={
           <>
             <Tooltip title="Редактировать">
-              <IconButton aria-label="settings" onClick={editPost}>
-                <EditIcon />
-              </IconButton>
+              <Link to={`/edit/${post.id}`} state={{ background: location }}>
+                <IconButton aria-label="settings">
+                  <EditIcon />
+                </IconButton>
+              </Link>
             </Tooltip>
             <Tooltip title="Удалить">
-              <IconButton aria-label="settings" onClick={deletePost}>
-                <DeleteIcon />
-              </IconButton>
+              <Link to={`/delete/${post.id}`} state={{ background: location }}>
+                <IconButton aria-label="settings">
+                  <DeleteIcon />
+                </IconButton>
+              </Link>
             </Tooltip>
           </>
         }

@@ -1,16 +1,19 @@
 import React from 'react';
 import './postForm.scss';
 import { v4 as uuidv4 } from 'uuid';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { useAppSelector, useAppDispatch } from '../../../hooks/hooks';
-import { setModalWindow, setPostList } from '../../../store/postSlice';
+import { setPostList } from '../../../store/postSlice';
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 const PostForm = ({ type }) => {
   const dispatch = useAppDispatch();
-  const { postList, modalWindow } = useAppSelector((state) => state.postSlice);
+  const params = useParams();
+  const navigate = useNavigate();
+  const { postList } = useAppSelector((state) => state.postSlice);
 
   const [title, setTitle] = React.useState('');
   const [text, setText] = React.useState('');
@@ -20,13 +23,13 @@ const PostForm = ({ type }) => {
 
   React.useEffect(() => {
     if (type === 'edit') {
-      const post = postList.filter((item) => item.id === modalWindow.id)[0];
+      const post = postList.filter((item) => item.id === params.id)[0];
 
       setTitle(post.title);
       setText(post.text);
       setFile(post.img);
     }
-  }, [postList, modalWindow.id, type]);
+  }, [params.id, postList, type]);
 
   const createPost = () => {
     if (!title) {
@@ -44,23 +47,17 @@ const PostForm = ({ type }) => {
 
       dispatch(setPostList([post, ...postList]));
 
-      dispatch(
-        setModalWindow({
-          open: false,
-          type: '',
-          id: '',
-        })
-      );
+      navigate('/');
     }
   };
 
   const editPost = () => {
-    const index = postList.findIndex((item) => item.id === modalWindow.id);
-    const post = postList.find((item) => item.id === modalWindow.id);
+    const index = postList.findIndex((item) => item.id === params.id);
+    const post = postList.find((item) => item.id === params.id);
 
     if (title !== post.title || text !== post.text || file !== post.img) {
       const editedPost = {
-        id: modalWindow.id,
+        id: params.id,
         title,
         text,
         img: file,
@@ -76,13 +73,7 @@ const PostForm = ({ type }) => {
       );
     }
 
-    dispatch(
-      setModalWindow({
-        open: false,
-        type: '',
-        id: '',
-      })
-    );
+    navigate('/');
   };
 
   return (

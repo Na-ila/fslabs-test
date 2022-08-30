@@ -1,7 +1,5 @@
 import React from 'react';
-
-import { useAppSelector, useAppDispatch } from '../../hooks/hooks';
-import { setModalWindow } from '../../store/postSlice';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
 import Delete from './Delete';
 import PostForm from './PostForm';
@@ -22,31 +20,25 @@ const style = {
 };
 
 const ModalWindow = () => {
-  const dispatch = useAppDispatch();
-  const { modalWindow } = useAppSelector((st) => st.postSlice);
+  const params = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleClose = () =>
-    dispatch(
-      setModalWindow({
-        open: false,
-        type: '',
-        id: '',
-      })
-    );
+  const handleClose = () => navigate('/');
 
   return (
     <Modal
-      open={modalWindow.open}
+      open
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        {modalWindow.type === 'delete' ? (
+        {location.pathname === `/delete/${params.id}` ? (
           <Delete />
-        ) : modalWindow.type === 'create' ? (
+        ) : location.pathname === '/create' ? (
           <PostForm type="create" />
-        ) : modalWindow.type === 'edit' ? (
+        ) : location.pathname === `/edit/${params.id}` ? (
           <PostForm type="edit" />
         ) : (
           <></>
