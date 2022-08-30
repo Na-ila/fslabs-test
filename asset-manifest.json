@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/fslabs-test/static/css/main.ec855782.css",
-    "main.js": "/fslabs-test/static/js/main.4d13bf7d.js",
+    "main.js": "/fslabs-test/static/js/main.a1e5632d.js",
     "index.html": "/fslabs-test/index.html",
     "main.ec855782.css.map": "/fslabs-test/static/css/main.ec855782.css.map",
-    "main.4d13bf7d.js.map": "/fslabs-test/static/js/main.4d13bf7d.js.map"
+    "main.a1e5632d.js.map": "/fslabs-test/static/js/main.a1e5632d.js.map"
   },
   "entrypoints": [
     "static/css/main.ec855782.css",
-    "static/js/main.4d13bf7d.js"
+    "static/js/main.a1e5632d.js"
   ]
 }
