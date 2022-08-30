@@ -2,7 +2,7 @@
   "name": "fslabs-test",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Na-ila.github.io/fslabs-test",
+  "homepage": "https://na-ila.github.io/fslabs-test/",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
