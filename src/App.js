@@ -44,7 +44,6 @@ function App() {
   return (
     <div className="app">
       <Routes location={background || location}>
-        <Route path="/popo" element={<div>kmlkmlm</div>} />
         <Route
           path="/"
           element={

@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, Outlet } from 'react-router-dom';
 
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
@@ -8,13 +8,16 @@ const Actions = () => {
   const location = useLocation();
 
   return (
-    <Tooltip title="Создать">
+    <>
       <Link to="/create" state={{ background: location }}>
-        <IconButton aria-label="create">
-          <AddIcon fontSize="large" color="primary" />
-        </IconButton>
+        <Tooltip title="Создать">
+          <IconButton aria-label="create">
+            <AddIcon fontSize="large" color="primary" />
+          </IconButton>
+        </Tooltip>
       </Link>
-    </Tooltip>
+      <Outlet />
+    </>
   );
 };
 
