@@ -43,15 +43,23 @@ function App() {
 
   return (
     <div className="app">
-      <div className="header">
-        <Title />
-        <div className="control_panel">
-          <Filters />
-          <Actions />
-        </div>
-      </div>
       <Routes location={background || location}>
-        <Route path="/" element={<PostList />}>
+        <Route path="/popo" element={<div>kmlkmlm</div>} />
+        <Route
+          path="/"
+          element={
+            <>
+              <div className="header">
+                <Title />
+                <div className="control_panel">
+                  <Filters />
+                  <Actions />
+                </div>
+              </div>
+              <PostList />
+            </>
+          }
+        >
           <Route path="/create" element={<ModalWindow />} />
           <Route path="/edit/:id" element={<ModalWindow />} />
           <Route path="/delete/:id" element={<ModalWindow />} />
