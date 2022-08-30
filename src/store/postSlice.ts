@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { setWithExpiry } from '../App/config';
+
 interface IState {
   postList: {
     title: string;
@@ -28,7 +30,8 @@ const postSlice = createSlice({
   reducers: {
     setPostList(state, { payload }) {
       state.postList = payload;
-      localStorage.setItem('postList', JSON.stringify(payload));
+
+      setWithExpiry('postList', payload, 600000);
     },
     setSearchStr(state, { payload }) {
       state.filters.searchStr = payload;

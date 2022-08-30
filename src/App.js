@@ -4,6 +4,7 @@ import { initialData } from './App/initialData';
 import { v4 as uuidv4 } from 'uuid';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+import { getWithExpiry } from './App/config';
 import { useAppDispatch } from './hooks/hooks';
 import { setPostList } from './store/postSlice';
 
@@ -24,8 +25,9 @@ function App() {
     if (!didInit) {
       didInit = true;
 
-      if (localStorage.getItem('postList')) {
-        dispatch(setPostList(JSON.parse(localStorage.getItem('postList'))));
+      if (getWithExpiry('postList')) {
+        const data = getWithExpiry('postList');
+        dispatch(setPostList(data));
       } else {
         dispatch(
           setPostList(
