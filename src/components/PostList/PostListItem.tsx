@@ -28,16 +28,8 @@ const PostListItem = ({ post, info }: IPostListItemProps) => {
   const location = useLocation();
 
   return (
-    <Card
-      sx={{ maxWidth: 400, width: 400 }}
-      style={{ boxShadow: info ? 'none' : '' }}
-    >
+    <Card style={{ boxShadow: info ? 'none' : '' }} className="post_item">
       <CardHeader
-        // avatar={
-        //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-        //     R
-        //   </Avatar>
-        // }
         action={
           <>
             <Tooltip title="Редактировать">

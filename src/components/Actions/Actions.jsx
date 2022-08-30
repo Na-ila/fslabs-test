@@ -11,7 +11,7 @@ const Actions = () => {
     <>
       <Link to="/create" state={{ background: location }}>
         <Tooltip title="Создать">
-          <IconButton aria-label="create">
+          <IconButton aria-label="create" style={{ padding: 0 }}>
             <AddIcon fontSize="large" color="primary" />
           </IconButton>
         </Tooltip>

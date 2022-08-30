@@ -1,4 +1,11 @@
+$small: 500px;
+
 .title {
   font-size: 40px;
   text-align: center;
+  margin-bottom: 10px;
+
+  @media screen and (max-width: $small) {
+    font-size: 25px;
+  }
 }

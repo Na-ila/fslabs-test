@@ -52,6 +52,7 @@ const PostForm = ({ type }: IPostFormProps) => {
       dispatch(setPostList([post, ...postList]));
 
       navigate('/');
+      window.scrollTo(0, 0);
     }
   };
 
@@ -78,6 +79,7 @@ const PostForm = ({ type }: IPostFormProps) => {
     }
 
     navigate('/');
+    window.scrollTo(0, 0);
   };
 
   return (
