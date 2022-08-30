@@ -13,22 +13,32 @@ import PostList from './components/PostList';
 import Actions from './components/Actions';
 import ModalWindow from './components/ModalWindow';
 
+let didInit = false;
+
 function App() {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const background = location.state && location.state.background;
 
   React.useEffect(() => {
-    dispatch(
-      setPostList(
-        posts.map((item) => {
-          return {
-            ...item,
-            id: uuidv4(),
-          };
-        })
-      )
-    );
+    if (!didInit) {
+      didInit = true;
+
+      if (localStorage.getItem('postList')) {
+        dispatch(setPostList(JSON.parse(localStorage.getItem('postList'))));
+      } else {
+        dispatch(
+          setPostList(
+            posts.map((item) => {
+              return {
+                ...item,
+                id: uuidv4(),
+              };
+            })
+          )
+        );
+      }
+    }
   }, [dispatch]);
 
   return (

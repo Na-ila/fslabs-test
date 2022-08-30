@@ -14,6 +14,7 @@ const postSlice = createSlice({
   reducers: {
     setPostList(state, { payload }) {
       state.postList = payload;
+      localStorage.setItem('postList', JSON.stringify(payload));
     },
     setSearchStr(state, { payload }) {
       state.filters.searchStr = payload;
