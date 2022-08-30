@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.scss';
-import posts from './postList.json';
+import { initialData } from './App/initialData';
 import { v4 as uuidv4 } from 'uuid';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ function App() {
       } else {
         dispatch(
           setPostList(
-            posts.map((item) => {
+            initialData.map((item) => {
               return {
                 ...item,
                 id: uuidv4(),
