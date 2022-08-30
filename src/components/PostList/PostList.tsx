@@ -16,8 +16,9 @@ const PostList = () => {
             .includes(filters.searchStr.toLowerCase())
         )
         .sort((a, b) => {
-          if (!filters.dateFromLast) return new Date(a.date) - new Date(b.date);
-          return new Date(b.date) - new Date(a.date);
+          if (!filters.dateFromLast)
+            return new Date(a.date).getTime() - new Date(b.date).getTime();
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
         })
         .map((item) => (
           <PostListItem post={item} key={item.id} />

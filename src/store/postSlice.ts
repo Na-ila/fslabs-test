@@ -1,6 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+interface IState {
+  postList: {
+    title: string;
+    text: string;
+    img: string;
+    date: string;
+    id: string;
+  }[];
+  filters: {
+    searchStr: string;
+    dateFromLast: boolean;
+  };
+}
+
+const initialState: IState = {
   postList: [],
   filters: {
     searchStr: '',

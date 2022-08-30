@@ -9,7 +9,11 @@ import { setPostList } from '../../../store/postSlice';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const PostForm = ({ type }) => {
+interface IPostFormProps {
+  type: 'edit' | 'create';
+}
+
+const PostForm = ({ type }: IPostFormProps) => {
   const dispatch = useAppDispatch();
   const params = useParams();
   const navigate = useNavigate();
@@ -55,7 +59,7 @@ const PostForm = ({ type }) => {
     const index = postList.findIndex((item) => item.id === params.id);
     const post = postList.find((item) => item.id === params.id);
 
-    if (title !== post.title || text !== post.text || file !== post.img) {
+    if (title !== post?.title || text !== post?.text || file !== post?.img) {
       const editedPost = {
         id: params.id,
         title,
@@ -110,7 +114,10 @@ const PostForm = ({ type }) => {
         type="file"
         multiple
         accept="image/*"
-        onChange={(e) => setFile(URL.createObjectURL(e.target.files[0]))}
+        onChange={(e) => {
+          if (!e.target.files) return;
+          setFile(URL.createObjectURL(e.target.files[0]));
+        }}
       />
       <Button
         variant="contained"

@@ -32,6 +32,7 @@ const ModalWindow = () => {
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
+      disableAutoFocus
     >
       <Box sx={style}>
         {location.pathname === `/delete/${params.id}` ? (

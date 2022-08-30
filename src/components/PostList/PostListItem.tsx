@@ -13,11 +13,25 @@ import { red } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const PostListItem = ({ post, info }) => {
+interface IPostListItemProps {
+  post: {
+    title: string;
+    text: string;
+    img: string;
+    date: string;
+    id: string;
+  };
+  info?: boolean;
+}
+
+const PostListItem = ({ post, info }: IPostListItemProps) => {
   const location = useLocation();
 
   return (
-    <Card sx={{ maxWidth: 400, width: 400, boxShadow: info && 'none' }}>
+    <Card
+      sx={{ maxWidth: 400, width: 400 }}
+      style={{ boxShadow: info ? 'none' : '' }}
+    >
       <CardHeader
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
