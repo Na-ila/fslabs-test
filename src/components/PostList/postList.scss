@@ -6,12 +6,12 @@
   margin-top: 15vh;
   margin-bottom: 30px;
 
-  .post_card {
+  .post_content {
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
   }
 }

@@ -13,11 +13,11 @@ import { red } from '@mui/material/colors';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const PostListItem = ({ post }) => {
+const PostListItem = ({ post, info }) => {
   const location = useLocation();
 
   return (
-    <Card sx={{ maxWidth: 345, width: 345 }} className="post_card">
+    <Card sx={{ maxWidth: 400, width: 400, boxShadow: info && 'none' }}>
       <CardHeader
         // avatar={
         //   <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -45,19 +45,23 @@ const PostListItem = ({ post }) => {
         title={post.title}
         subheader={new Date(post.date).toLocaleDateString('ru-RU')}
       />
-      {post.img && (
-        <CardMedia
-          component="img"
-          height="194"
-          image={post.img}
-          alt={post.title}
-        />
-      )}
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {post.text}
-        </Typography>
-      </CardContent>
+      <Link to={`/post/${post.id}`} state={{ background: location }}>
+        <div className="post_content">
+          {post.img && (
+            <CardMedia
+              component="img"
+              height="194"
+              image={post.img}
+              alt={post.title}
+            />
+          )}
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {post.text}
+            </Typography>
+          </CardContent>
+        </div>
+      </Link>
     </Card>
   );
 };

@@ -55,6 +55,7 @@ function App() {
           <Route path="/create" element={<ModalWindow />} />
           <Route path="/edit/:id" element={<ModalWindow />} />
           <Route path="/delete/:id" element={<ModalWindow />} />
+          <Route path="/post/:id" element={<ModalWindow />} />
         </Route>
       </Routes>
       {background && (
@@ -62,6 +63,7 @@ function App() {
           <Route path="/create" element={<ModalWindow />} />
           <Route path="/edit/:id" element={<ModalWindow />} />
           <Route path="/delete/:id" element={<ModalWindow />} />
+          <Route path="/post/:id" element={<ModalWindow />} />
         </Routes>
       )}
     </div>
